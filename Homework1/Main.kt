@@ -79,19 +79,33 @@ class Dekoder(private val instrukcije: Array<String>, private val tastatura: Tas
     }
 }
 
+fun ucitajTekst(putanja: String): Array<String> {
+    val sadrzaj: List<String> = File(putanja).readText().split("\\s+".toRegex())
+    return sadrzaj.toTypedArray()
+}
+
 fun main() {
+
+    print("Unesi putanju do txt datoteke sa instrukcijama: ")
+    val putanja = readLine()
+
+    if(putanja != null){
     val tastatura = Tastatura()
     
-    val instrukcije = arrayOf(
-        "^<<",
-        ">>vvv",
-        "<^>v<",
-        "^^^^v"
-    )
+    val instrukcije = ucitajTekst(putanja)
+ //   val instrukcije = arrayOf(
+ //       "^<<",
+ //       ">>vvv",
+ //       "<^>v<",
+ //       "^^^^v"
+ //   )
 
     val dekoder = Dekoder(instrukcije, tastatura)
     val sigurnosniKod = dekoder.dekodiraj()
     
     println("Sigurnosni kod: $sigurnosniKod") 
+    } else {
+	    println("Niste unijeli putanju.")
+    }
 }
 
