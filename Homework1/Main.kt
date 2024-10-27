@@ -59,7 +59,7 @@ class Tastatura(private val matrica: Array<Array<Int>> = arrayOf(
 class Dekoder(private val instrukcije: Array<String>, private val tastatura: Tastatura) {
     fun dekodiraj(): String {
         var sigurnosniKod = ""
-        var trenutna_pozicija = Pair(1, 1) // Initialize to position of '5'
+        var trenutna_pozicija = Pair(1, 1) 
 
         for (instrukcija in instrukcije) {
             for (i in instrukcija) {
